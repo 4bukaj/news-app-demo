@@ -1,24 +1,23 @@
 import React from 'react';
-import './App.css';
+import { Route, Routes } from 'react-router';
+import Home from './pages/Home';
+import Country from './pages/Country';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { useThemeContext } from './theme/ThemeContextProvider';
 
-function App() {
+const App = () => {
+  const { theme } = useThemeContext();
+
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Routes>
+        <Route path='/' element={<Home />}>
+          <Route index element={<p>dupa</p>} />
+          <Route path=':country' element={<Country />} />
+        </Route>
+      </Routes>
+    </ThemeProvider>
   );
-}
-
+};
 export default App;
