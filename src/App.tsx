@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Routes } from 'react-router';
-import Home from './pages/Home';
-import Country from './pages/Country';
+import Home from './views/Home';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { useThemeContext } from './theme/ThemeContextProvider';
+import Articles from './views/Articles';
 
 const App = () => {
   const { theme } = useThemeContext();
@@ -14,7 +14,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />}>
           <Route index element={<p>dupa</p>} />
-          <Route path=':country' element={<Country />} />
+          <Route path=':country' element={<Articles />} />
         </Route>
       </Routes>
     </ThemeProvider>

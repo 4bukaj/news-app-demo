@@ -1,13 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Layout } from '../../types/layout';
 
 interface LayoutState {
   sidebarOpened: boolean;
-  tileLayout: 'grid' | 'list';
+  layout: Layout;
 }
 
 const initialState: LayoutState = {
   sidebarOpened: false,
-  tileLayout: 'grid',
+  layout: 'grid',
 };
 
 const layoutSlice = createSlice({
@@ -20,15 +21,12 @@ const layoutSlice = createSlice({
     closeSidebar: (state) => {
       state.sidebarOpened = false;
     },
-    toggleTileLayout: (state) => {
-      const { tileLayout: layout } = state;
-
-      state.tileLayout = layout === 'grid' ? 'list' : 'grid';
+    toggleLayout: (state, action: PayloadAction<Layout>) => {
+      state.layout = action.payload;
     },
   },
 });
 
-export const { openSidebar, closeSidebar, toggleTileLayout } =
-  layoutSlice.actions;
+export const { openSidebar, closeSidebar, toggleLayout } = layoutSlice.actions;
 
 export default layoutSlice.reducer;

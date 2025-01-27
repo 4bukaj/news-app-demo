@@ -1,9 +1,18 @@
 const styles = {
+  listWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8px',
+    padding: '16px',
+  },
   listItem: {
-    border: '1px solid red',
     display: 'flex',
     gap: '16px',
     alignItems: 'center',
+
+    '&:not(:last-child)': {
+      borderBottom: '1px solid red',
+    },
   },
   flagContainer: {
     width: '40px',
