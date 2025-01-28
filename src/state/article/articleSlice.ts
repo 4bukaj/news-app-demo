@@ -24,6 +24,6 @@ const layoutSlice = createSlice({
   },
 });
 
-export const { updateCurrentCountry } = layoutSlice.actions;
+export const { updateCurrentCountry, updateArticleData } = layoutSlice.actions;
 
 export default layoutSlice.reducer;

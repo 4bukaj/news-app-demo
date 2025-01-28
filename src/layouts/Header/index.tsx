@@ -40,11 +40,13 @@ export default function Header() {
     <Box sx={styles.headerWrapper}>
       <Box sx={styles.headerIntro}>
         <IconButton onClick={handleOpenSidebar}>
-          <MenuIcon />
+          <MenuIcon fontSize='large' />
         </IconButton>
-        <Typography>News App</Typography>
+        <Typography variant='h5' sx={styles.headerTitle}>
+          News App
+        </Typography>
       </Box>
-      <Box>
+      <Box sx={styles.headerActions}>
         <ToggleButtonGroup
           value={layout}
           exclusive

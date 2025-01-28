@@ -3,26 +3,28 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     gap: '8px',
-    padding: '16px',
   },
   listItem: {
     display: 'flex',
     gap: '16px',
     alignItems: 'center',
-
-    '&:not(:last-child)': {
-      borderBottom: '1px solid red',
-    },
+    width: '100%',
   },
   flagContainer: {
     width: '40px',
-    height: '20px',
+    height: '30px',
 
     img: {
       width: '100%',
       height: '100%',
       objectFit: 'contain',
     },
+  },
+  countryName: {
+    color: 'inherit',
+  },
+  searchWrapper: {
+    padding: '8px',
   },
 };
 

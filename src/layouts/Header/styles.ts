@@ -14,6 +14,15 @@ const styles = {
     alignItems: 'center',
     gap: '16px',
   },
+  headerTitle: {
+    textTransform: 'uppercase',
+    letterSpacing: '10px',
+  },
+  headerActions: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '16px',
+  },
 };
 
 export default styles;

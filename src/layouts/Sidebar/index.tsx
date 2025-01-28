@@ -4,9 +4,10 @@ import {
   Box,
   List,
   ListItem,
-  ListItemText,
   Skeleton,
   TextField,
+  Typography,
+  Button,
 } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../state/store';
@@ -15,6 +16,7 @@ import { useFetchData } from '../../hooks/fetchData';
 import { Country } from '../../types/countries';
 import { Link } from 'react-router';
 import useDebounce from '../../hooks/useDebounce';
+import styles from './styles';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -39,7 +41,10 @@ const Sidebar = () => {
     );
   }, [data, debouncedSearch]);
 
-  const handleCloseSidebar = () => dispatch(closeSidebar());
+  const handleCloseSidebar = () => {
+    setSearchValue('');
+    dispatch(closeSidebar());
+  };
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
@@ -52,6 +57,10 @@ const Sidebar = () => {
       ));
     }
 
+    if (error) {
+      return <ListItem>{error.message}</ListItem>;
+    }
+
     if (filteredCountries.length === 0) {
       return <ListItem>No matching countries found.</ListItem>;
     }
@@ -62,26 +71,32 @@ const Sidebar = () => {
         to={`/${country.cca2.toLowerCase()}`}
         onClick={handleCloseSidebar}
       >
-        <ListItem sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <Box sx={{ width: 32, height: 24 }}>
-            <img
-              src={country.flags?.svg || ''}
-              alt={`${country.name.common} flag`}
-              style={{ width: '100%', height: '100%' }}
-            />
-          </Box>
-          <ListItemText primary={country.name.common} />
-        </ListItem>
+        <Button fullWidth>
+          <ListItem sx={styles.listItem}>
+            <Box sx={styles.flagContainer}>
+              <img
+                src={country.flags?.svg || ''}
+                alt={`${country.name.common} flag`}
+              />
+            </Box>
+            <Typography variant='body1' sx={styles.countryName}>
+              {country.name.common}
+            </Typography>
+          </ListItem>
+        </Button>
       </Link>
     ));
   };
 
-  if (!open) return null;
-
   return (
-    <Drawer open={open} onClose={handleCloseSidebar}>
-      <Box sx={{ width: 250 }} role='presentation'>
-        <Box sx={{ padding: 2 }}>
+    <Drawer
+      anchor='left'
+      variant='temporary'
+      open={open}
+      onClose={handleCloseSidebar}
+    >
+      <Box sx={{ width: 280 }} role='presentation'>
+        <Box sx={styles.searchWrapper}>
           <TextField
             label='Search Country'
             variant='outlined'
@@ -90,7 +105,7 @@ const Sidebar = () => {
             onChange={handleSearchChange}
           />
         </Box>
-        <List>{renderCountryList()}</List>
+        <List sx={styles.listWrapper}>{renderCountryList()}</List>
       </Box>
     </Drawer>
   );
