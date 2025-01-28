@@ -15,7 +15,7 @@ const Articles = () => {
   const layout = useSelector((state: RootState) => state.layout.layout);
 
   const { data, error, loading } = useFetchData<ArticlesResponse>(
-    `https://newsapi.org/v2/top-headlines?country=${country}&apiKey=c89fc1d0039b4868b3b7c63118fafaca`
+    `https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${process.env.REACT_APP_NEWSAPI_KEY}`
   );
 
   if (!data) return;
