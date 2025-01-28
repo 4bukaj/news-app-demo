@@ -10,6 +10,7 @@ import { format } from 'date-fns';
 import { useDispatch } from 'react-redux';
 import { openModal } from '../../state/layout/layoutSlice';
 import { updateArticleData } from '../../state/article/articleSlice';
+import { tileGridBreakpoints } from '../../utils/breakpoints';
 
 export default function ArticleTile({ article }: { article: Article }) {
   const dispatch = useDispatch();
@@ -31,11 +32,11 @@ export default function ArticleTile({ article }: { article: Article }) {
 
   return (
     <Grid
-      size={layout === 'grid' ? 4 : 12}
+      size={layout === 'grid' ? tileGridBreakpoints : 12}
       sx={[styles.wrapper, styles[layout]]}
       onClick={handleShowArticleDetails}
     >
-      <Box sx={styles[`${layout}Image`]}>
+      <Box sx={[styles.imageWrapper, styles[`${layout}Image`]]}>
         {article.urlToImage ? (
           <img src={article.urlToImage} alt={article.title} />
         ) : (

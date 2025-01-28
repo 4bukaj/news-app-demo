@@ -11,29 +11,23 @@ const styles = {
     height: '350px',
   },
   list: {
-    height: '100px',
+    height: '120px',
     display: 'flex',
     gap: '8px',
+  },
+  imageWrapper: {
+    img: {
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+    },
   },
   gridImage: {
     width: '100%',
     height: '60%',
-
-    img: {
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-    },
   },
   listImage: {
-    width: '50%',
-    maxWidth: '200px',
-
-    img: {
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-    },
+    width: '200px',
   },
   noImage: {
     backgroundColor: '#999',
@@ -44,7 +38,6 @@ const styles = {
   },
   articleText: {
     padding: '16px',
-    height: '40%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -54,6 +47,7 @@ const styles = {
   },
   listText: {
     height: '100%',
+    width: '100%',
   },
   articleSubtext: {
     display: 'flex',

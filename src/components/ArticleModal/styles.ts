@@ -13,8 +13,12 @@ const styles = {
     left: '50%',
     transform: 'translate(-50%, -50%)',
     borderRadius: '25px',
-    width: '60%',
+    width: {
+      xs: '90%',
+      md: '60%',
+    },
     minHeight: '50vh',
+    maxHeight: '90vh',
     backgroundColor: '#fff',
     overflow: 'hidden',
   },

@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../state/store';
 import Grid from '@mui/material/Grid2';
 import ArticleInfo from '../../components/ContentDisclaimer';
+import { tileGridBreakpoints } from '../../utils/breakpoints';
 
 const Articles = () => {
   const { country } = useParams();
@@ -24,10 +25,10 @@ const Articles = () => {
     return <ArticleInfo info={'Sorry, no articles found :('} />;
 
   return (
-    <Grid container spacing={4} sx={styles.gridWrapper}>
+    <Grid container spacing={{ xs: 2, sm: 4 }} sx={styles.gridWrapper}>
       {loading ? (
         Array.from({ length: 10 }).map((_, index) => (
-          <Grid size={layout === 'grid' ? 4 : 12}>
+          <Grid size={layout === 'grid' ? tileGridBreakpoints : 12}>
             <Skeleton
               key={index}
               variant='rounded'

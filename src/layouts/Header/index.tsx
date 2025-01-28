@@ -10,6 +10,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import GridViewIcon from '@mui/icons-material/GridView';
+import Grid from '@mui/material/Grid2';
 
 import styles from './styles';
 import ColorModeToggle from '../../components/ColorModeToggle';
@@ -37,16 +38,16 @@ export default function Header() {
   };
 
   return (
-    <Box sx={styles.headerWrapper}>
-      <Box sx={styles.headerIntro}>
+    <Grid container sx={styles.headerWrapper}>
+      <Grid size={{ xs: 12, sm: 6 }} sx={styles.headerIntro}>
         <IconButton onClick={handleOpenSidebar}>
           <MenuIcon fontSize='large' />
         </IconButton>
         <Typography variant='h5' sx={styles.headerTitle}>
           News App
         </Typography>
-      </Box>
-      <Box sx={styles.headerActions}>
+      </Grid>
+      <Grid size={{ xs: 12, sm: 6 }} sx={styles.headerActions}>
         <ToggleButtonGroup
           value={layout}
           exclusive
@@ -60,7 +61,7 @@ export default function Header() {
           </ToggleButton>
         </ToggleButtonGroup>
         <ColorModeToggle />
-      </Box>
-    </Box>
+      </Grid>
+    </Grid>
   );
 }

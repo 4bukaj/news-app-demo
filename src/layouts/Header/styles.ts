@@ -2,9 +2,6 @@ import { Palette } from '@mui/material';
 
 const styles = {
   headerWrapper: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
     padding: '16px',
     backgroundColor: ({ palette }: { palette: Palette }) =>
       palette.primary.main,
@@ -20,6 +17,10 @@ const styles = {
   },
   headerActions: {
     display: 'flex',
+    justifyContent: {
+      xs: 'center',
+      sm: 'flex-end',
+    },
     alignItems: 'center',
     gap: '16px',
   },
